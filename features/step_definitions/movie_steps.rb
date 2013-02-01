@@ -30,3 +30,9 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
     step %Q{I uncheck "ratings[#{rating}]"} if uncheck
   end
 end
+
+Then /I should see all of the movies/ do
+  puts "Movies on page: " + page.all("#movies tbody tr").length.to_s
+  puts "Movies in DB: " + Movie.all.length.to_s
+  page.all("#movies tbody tr").length.should == Movie.all.length
+end
