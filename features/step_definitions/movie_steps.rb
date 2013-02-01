@@ -32,7 +32,5 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
 end
 
 Then /I should see all of the movies/ do
-  puts "Movies on page: " + page.all("#movies tbody tr").length.to_s
-  puts "Movies in DB: " + Movie.all.length.to_s
   page.all("#movies tbody tr").length.should == Movie.all.length
 end
